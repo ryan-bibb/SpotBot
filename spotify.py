@@ -44,9 +44,9 @@ def get_recently_played(limit=10, token=None):
 
 #****************************************************************************************************
 
-def get_top_tracks(limit=10, token=None):
+def get_top_tracks(limit=10, time_range='short_term', token=None):
     sp = get_spotify_client(token)
-    results = sp.current_user_top_tracks(limit=limit)
+    results = sp.current_user_top_tracks(limit=limit, time_range=time_range)
     top_tracks = []
 
     for track in results['items']:
@@ -60,9 +60,9 @@ def get_top_tracks(limit=10, token=None):
 
 #****************************************************************************************************
 
-def get_top_artists(limit=10, token=None):
+def get_top_artists(limit=10, time_range='short_term', token=None):
     sp = get_spotify_client(token)
-    results = sp.current_user_top_artists(limit=limit)
+    results = sp.current_user_top_artists(limit=limit, time_range=time_range)
     top_artists = []
 
     for artists in results['items']:

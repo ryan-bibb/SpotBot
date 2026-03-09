@@ -2,6 +2,13 @@
 {% block title %}Top Artists{% endblock %}
 {% block content %}
     <h1>Top Artists</h1>
+    <form method="GET" action="/top-artists">
+        <select name="time_range" onchange="this.form.submit()">
+            <option value="short_term" {% if request.args.get('time_range') == 'short_term' %}selected{% endif %}>Last Month</option>
+            <option value="medium_term" {% if request.args.get('time_range') == 'medium_term' %}selected{% endif %}>Last 6 Months</option>
+            <option value="long_term" {% if request.args.get('time_range') == 'long_term' %}selected{% endif %}>Last Year</option>
+        </select>
+    </form>
     <ul>
         {% for artist in artists %}
             <li>{{ artist }}</li>

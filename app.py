@@ -84,7 +84,8 @@ def top_tracks():
     if check:
         return check
     token = session.get('token')
-    tracks = get_top_tracks(token=token)
+    time_range = request.args.get('time_range', 'short_term')
+    tracks = get_top_tracks(time_range=time_range, token=token)
     return render_template('top_tracks.html', tracks=tracks)
 
 #****************************************************************************************************
@@ -95,7 +96,8 @@ def top_artists():
     if check:
         return check
     token = session.get('token')
-    artists = get_top_artists(token=token)
+    time_range = request.args.get('time_range', 'short_term')
+    artists = get_top_artists(time_range=time_range, token=token)
     return render_template('top_artists.html', artists=artists)
 
 #****************************************************************************************************
