@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Top Tracks{% endblock %}
+{% block content %}
+    <h1>Top Tracks</h1>
+    <ul>
+        {% for track in tracks %}
+            <li>{{ track.name }} — {{ track.artist }} — {{ track.album }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

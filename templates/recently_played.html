@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Recently Played{% endblock %}
+{% block content %}
+    <h1>Recently Played</h1>
+    <ul>
+        {% for track in tracks %}
+            <li>{{ track.name }} by {{ track.artist }} — {{ track.album }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

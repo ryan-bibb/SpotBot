@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Create Playlist{% endblock %}
+{% block content %}
+    <h1>Create a Playlist</h1>
+    <form method="POST" action="/create-playlist">
+        <input type="text" name="name" placeholder="Playlist name" required>
+        <input type="text" name="description" placeholder="Describe the vibe (e.g. happy upbeat summer songs)" required>
+        <button type="submit">Generate Playlist</button>
+    </form>
+
+    {% if playlist_created %}
+        <h2>Playlist Created!</h2>
+        <p>Your playlist has been created based on your description.</p>
+    {% endif %}
+
+    {% if recommendations %}
+        <h2>Recommended Songs:</h2>
+        <ul>
+            {% for song in recommendations %}
+                <li>{{ song }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

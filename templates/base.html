@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SpotBot{% endblock %}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+        }
+
+        nav {
+            background-color: #000;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        nav a {
+            color: #b3b3b3;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: #1db954; }
+
+        nav .logo {
+            color: #1db954;
+            font-size: 20px;
+            font-weight: 700;
+            margin-right: 16px;
+        }
+
+        .login-btn {
+            margin-left: auto;
+            background-color: #1db954;
+            color: #000 !important;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700 !important;
+        }
+
+        .login-btn:hover { background-color: #1ed760 !important; color: #000 !important; }
+
+        .container {
+            max-width: 900px;
+            margin: 48px auto;
+            padding: 0 24px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        ul { list-style: none; }
+
+        ul li {
+            background-color: #1e1e1e;
+            padding: 14px 18px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #ccc;
+            transition: background 0.2s;
+        }
+
+        ul li:hover { background-color: #282828; color: #fff; }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #1db954;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back:hover { text-decoration: underline; }
+
+        .mood-box {
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            padding: 48px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #1db954;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            background-color: #1db954;
+            color: #000;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover { background-color: #1ed760; }
+    </style>
+</head>
+<body>
+    <nav>
+        <span class="logo">SpotifyBot</span>
+        <a href="/recently-played">Recently Played</a>
+        <a href="/top-tracks">Top Tracks</a>
+        <a href="/top-artists">Top Artists</a>
+        <a href="/mood">My Mood</a>
+        <!-- <a href="/create-playlist">Create Playlist</a> -->
+        {% if username %}
+            <a href="/login" class="login-btn">{{ username }}</a>
+        {% else %}
+            <a href="/login" class="login-btn">Login</a>
+        {% endif %}
+    </nav>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
